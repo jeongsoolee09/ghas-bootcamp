@@ -16,10 +16,12 @@ jobs:  # the actions.
     name: Analyze             # the name that appears on the Web UI.
     runs-on: ubuntu-latest    # runner configuration.
     # ===== permissions granted to `Analyze` job. =====
-    permissions:
-      actions: read           # ???
-      contents: read          # ???
-      security-events: write  # ???
+    permissions:              # all of others that don't appear here are set to `none`.
+      actions: read           # actions of the repo: artifacts, runs, workflows, environments, jobs, etc.
+      contents: read          # contents the repo: branches, comments, commits, pulls, releases, codeql databases, etc.
+      security-events: write  # security related info: code scanning results, dependabot alerts, secret scanning results, etc.
+
+      # Full information for each keys can be found in the REST API documentation: https://docs.github.com/en/rest/overview/permissions-required-for-fine-grained-personal-access-tokens?apiVersion=2022-11-28#about-permissions-required-for-fine-grained-personal-access-token
 
     # ===== strategy for matrix testing =====
     strategy:                 # strategy definition.
