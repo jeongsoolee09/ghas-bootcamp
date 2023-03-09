@@ -4,13 +4,24 @@ Code scanning enables developers to integrate security analysis tooling into the
 
 ### Contents
 
-- [Enabling code scanning](#enabling-code-scanning)
-- [Reviewing any failed analysis job](#reviewing-any-failed-analysis-job)
-- [Using context and expressions to modify build](#using-context-and-expressions-to-modify-build)
-- [Reviewing and managing results](#reviewing-and-managing-results)
-- [Triaging a result in a PR](#triaging-a-result-in-a-pr)
-- [Customizing CodeQL configuration](#customizing-codeql-configuration)
-- [Adding your own code scanning suite to exclude rules](#adding-your-own-code-scanning-suite-to-exclude-rules)
+- [Code scanning](#code-scanning)
+  - [Contents](#contents)
+  - [_**Lab 3**_](#lab-3)
+    - [Enabling code scanning](#enabling-code-scanning)
+    - [Reviewing any failed analysis job](#reviewing-any-failed-analysis-job)
+    - [Using context and expressions to modify build](#using-context-and-expressions-to-modify-build)
+    - [Reviewing and managing results](#reviewing-and-managing-results)
+    - [Triaging a result in a PR](#triaging-a-result-in-a-pr)
+    - [_Stretch Exercise 1: Fixing false positive results_](#stretch-exercise-1-fixing-false-positive-results)
+    - [_Stretch Exercise 2: Enabling code scanning on your own repository_](#stretch-exercise-2-enabling-code-scanning-on-your-own-repository)
+  - [_**Lab 4**_](#lab-4)
+    - [Customizing CodeQL Configuration](#customizing-codeql-configuration)
+    - [Adding your own code scanning suite to exclude rules](#adding-your-own-code-scanning-suite-to-exclude-rules)
+    - [Understanding how to add a custom query](#understanding-how-to-add-a-custom-query)
+    - [_Stretch Exercise 3: Adding a custom query from an external repository_](#stretch-exercise-3-adding-a-custom-query-from-an-external-repository)
+    - [_Stretch Exercise 3a: Uploading the SARIF as a workflow artifact_](#stretch-exercise-3a-uploading-the-sarif-as-a-workflow-artifact)
+    - [_Stretch Exercise 3b: Uploading CodeQL databases as workflow artifacts_](#stretch-exercise-3b-uploading-codeql-databases-as-workflow-artifacts)
+    - [_Full CodeQL Analysis Workflow_](#full-codeql-analysis-workflow)
 
 ### _**Lab 3**_
 
