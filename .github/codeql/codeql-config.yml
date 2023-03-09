@@ -1,0 +1,12 @@
+# A custom codeql config.
+# Relevant doc: https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/customizing-code-scanning#example-configuration-files
+name: "My CodeQL Config"
+
+disable-default-queries: true
+
+queries:
+  # ===== Importing a separately configured query suite =====
+  - uses: ./custom-queries/code-scanning.qls
+
+paths-ignore:
+  - '**/test/**'  # single quote needed for * character

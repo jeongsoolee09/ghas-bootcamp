@@ -32,30 +32,34 @@ jobs:  # the actions.
     # ===== steps for the job `analyze`. =====
     steps:  # order matters: it should reflect dependencies across different steps (it's done sequentially).
 
-    # ===== Step 1: `Set up JDK 16` =====
-    - name: Set up JDK 16         # the name that appears on the Web UI.
-      uses: actions/setup-java@v3 # github.com/actions/setup-java, version 3
-      # ===== options for this step: `Set up JDK 16`. =====
-      with:                       # options are found in the actions repository.
-        java-version: 16          # java version to set.
-        distribution: microsoft   # distributor to set.
-
-    # ===== Step 2: `Checkout repository` =====
+    # ===== Step 1: `Checkout repository` =====
     - name: Checkout repository   # the name that appears on the Web UI. 
       uses: actions/checkout@v3   # github.com/actions/checkout, version 3 (checks out the current repo)
 
-    # ===== Step 3: `Initialize CodeQL` =====
+    # ===== Step 2: `Initialize CodeQL` =====
     - name: Initialize CodeQL            # the name that appears on the Web UI. 
       uses: github/codeql-action/init@v2 # github.com/github/codeql-action/init, version 2
       with:                                 # options are found in the actions repository.
         languages: ${{ matrix.language }}   # the `language` property of the `matrix` context, as defined in the strategy dictionary.
+        config-file: ./.github/codeql/codeql-config.yml
+
+    # ===== Step 3: `Set up JDK 16` =====
+    - if: matrix.language == 'java' # conditionally run, if the current run's language is java
+      name: Set up JDK 16           # the name that appears on the Web UI.
+      uses: actions/setup-java@v3   # github.com/actions/setup-java, version 3
+      # ===== options for this step: `Set up JDK 16`. =====
+      with:                         # options are found in the actions repository.
+        java-version: 16            # java version to set.
+        distribution: microsoft     # distributor to set.
 
     # ===== Step 4: `Autobuild` =====
-    - name: Autobuild                          # the name that appears on the Web UI.
+    - if: matrix.language == 'java'            # conditionally run, if the current run's language is java
+      name: Autobuild                          # the name that appears on the Web UI.
       uses: github/codeql-action/autobuild@v2  # github.com/github/codeql-action, autobuild action
 
     # ===== Step 5: `Perform CodeQL Analysis`
     - name: Perform CodeQL Analysis            # the name that appears on the Web UI.
       uses: github/codeql-action/analyze@v2    # github.com/github/codeql-action, analyze action
       with:                                    # options are found in the actions repository.
+        # ===== A custom category name for each analysis run. =====
         category: "/language:${{ matrix.language }}" # the `language` property of the `matrix` context, as defined in the strategy dictionary.

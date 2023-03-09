@@ -1,0 +1,16 @@
+# Setting what queries should be run (from codeql-config.yml).
+# ===== Reusing existing QL Packs =====
+# ==> Pulls from github.com/github/codeql/java/ql/src/codeql-suites
+- import: codeql-suites/javascript-code-scanning.qls
+  from: codeql-javascript
+- import: codeql-suites/java-code-scanning.qls
+  from: codeql-java
+- import: codeql-suites/python-code-scanning.qls
+  from: codeql-python
+- import: codeql-suites/go-code-scanning.qls
+  from: codeql-go
+# ===== Excluding rules that cause false positives =====
+- exclude:
+    id:
+    # Refers to https://github.com/github/codeql/blob/cacae957b5b50252e5b11a04b4deeff8c9e109d0/java/ql/src/Security/CWE/CWE-352/SpringCSRFProtection.ql#L4 (see `@id`)
+    - java/spring-disabled-csrf-protection
