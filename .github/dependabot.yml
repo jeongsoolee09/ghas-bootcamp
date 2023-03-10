@@ -1,3 +1,4 @@
+# ===== Dependabot Configurations =====
 # To get started with Dependabot version updates, you'll need to specify which
 # package ecosystems to update and where the package manifests are located.
 # Please see the documentation for all configuration options:
@@ -6,16 +7,16 @@
 version: 2
 updates:
   - package-ecosystem: pip # bundler, cargo, composer, docker, elm, maven, npm, pip, ... (note: yarn is npm)
-    directory: "/"           # Location of package manifests (package.json, ...)
+    directory: "/authn-service"           # Location of package manifests (package.json, ...)
     schedule:                # can be scheduled using day, time, timezone, interval
     # When version updates are created
       interval: daily     # like weekly cron job.
-    commit-message:
+    commit-message:       # prefix for dependabot commit messages
       prefix: pip         # prefix all commit messages with "pip: "
     # ===== More options =====
-    labels:
+    labels:               # label to apply to PRs raised by dependabot
       - triage-required
-    assignees:
+    assignees:            # people that get assigned to PRs raised by dependabot
       - jeongsoolee09     # omit the "@" prefix
     # insecure-external-code-execution: allow
     # allow:
