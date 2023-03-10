@@ -36,11 +36,10 @@ The dependency graph can be accessed from the `Insights` tab in your repository.
 
 After a few minutes, the `Security` tab in the repository will indicate that there are new security alerts. You will see a **Create a security update** button; click this button to create a pull request (PR) to update the vulnerable dependency. The next section will show you how to enable security updates for all applicable Dependabot alerts.
 
-**Note**: If this not the case, we can trigger an analysis by updating `authn-service/requirements.txt`
+**Note**: If this is not the case, we can trigger an analysis by updating `authn-service/requirements.txt`
 
 1. Go to the Dependabot alert section to view the detected dependency issues.
-
-For each dependency alert, we have the option to create a security update or to dismiss the alert with a reason.
+   - For each dependency alert, we have the option to create a security update or to dismiss the alert with a reason.
 
 2. For one of the alerts, create a dependency security update. If Dependabot can update the dependency automatically, it will create a PR.
 
