@@ -11,9 +11,9 @@ queries:
   # Adding a Built-in qlpack (security-extended or security-and-quality)
   - uses: security-and-quality
   # Adding an in-repo local qlpack
-  - uses: ./custom-queries/code-scanning.qls
+  - uses: .github/custom-queries/code-scanning.qls
   # Adding a single local query outside a qlpack
-  - uses: ./custom-queries/go/jwt.ql
+  - uses: .github/custom-queries/go/jwt.ql
   # ===== External queries
   # Adding qlpack from an external repo
   # - name: some-org's some-qlpack  # name is optional
@@ -23,4 +23,4 @@ queries:
   #   uses: ./some-org/some-qlpack/some-qlfile@some-branch
 
 paths-ignore:
-  - '**/test/**'  # single quote needed for * character
+  - "**/test/**" # single quote needed for * character
