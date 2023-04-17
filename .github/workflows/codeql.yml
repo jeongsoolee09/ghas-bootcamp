@@ -65,7 +65,7 @@ jobs:  # the actions.
       uses: github/codeql-action/analyze@v2    # github.com/github/codeql-action, analyze action
       with:                                    # options are found in the actions repository.
         # ===== A custom category name for each analysis run: https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/customizing-code-scanning#configuring-a-category-for-the-analysis
-        # category: "/language:${{ matrix.language }}" # the `language` property of the `matrix` context, as defined in the strategy dictionary.
+        category: "/language:${{ matrix.language }}" # the `language` property of the `matrix` context, as defined in the strategy dictionary.
         # ==== resulting SARIF File: https://docs.github.com/en/code-security/code-scanning/integrating-with-code-scanning/uploading-a-sarif-file-to-github
         output: "./results/${{ matrix.language }}.sarif"  # path to write resulting sarif file
     
