@@ -67,13 +67,13 @@ jobs:  # the actions.
         # ===== A custom category name for each analysis run: https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/customizing-code-scanning#configuring-a-category-for-the-analysis
         # category: "/language:${{ matrix.language }}" # the `language` property of the `matrix` context, as defined in the strategy dictionary.
         # ==== resulting SARIF File: https://docs.github.com/en/code-security/code-scanning/integrating-with-code-scanning/uploading-a-sarif-file-to-github
-        output: "./results/{{ matrix.language }}.sarif"  # path to write resulting sarif file
+        output: "./results/${{ matrix.language }}.sarif"  # path to write resulting sarif file
     
     # ===== Step 6: `Upload SARIF for GH` =====
     - name: Upload SARIF for GH    # the name that appears on the Web UI.
       uses: github/codeql-action/upload-sarif@v2  # github.com/codeql-action/upload-sarif, for GH consumption
       with:
-        sarif_file: "./results/{{ matrix.language }}.sarif"  # path to the sarif file 
+        sarif_file: "./results/${{ matrix.language }}.sarif"  # path to the sarif file 
 
     # ===== Step 7: `Upload SARIF as Build Artifact` =====
     - name: Upload SARIF for custom use       # the name that appears on the Web UI.
