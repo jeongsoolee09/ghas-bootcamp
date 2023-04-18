@@ -87,7 +87,8 @@ jobs:  # the actions.
     - name: Bundle CodeQL database    # the name that appears on the Web UI.
       env:
         LANGUAGE: ${{ matrix.language }} # set the environment variable's value as the current langauge
-        CODEQL_PATH: /opt/hostedtoolcache/CodeQL/some-bundle-name/x64/codeql/codeql  # The path to `codeql` binary.
+        BUNDLE: 2.12.6-20230403
+        CODEQL_PATH: /opt/hostedtoolcache/CodeQL/$BUNDLE/x64/codeql/codeql  # The path to `codeql` binary.
         # QUESTION: How do we locate this?
       run: |
         CODEQL_DATABASE="/home/runner/work/_temp/codeql_databases/$LANGUAGE"  # we can use $LANGAUGE because it's now an env variable.
