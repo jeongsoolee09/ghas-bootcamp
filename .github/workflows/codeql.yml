@@ -96,10 +96,16 @@ jobs:  # the actions.
 
         echo "::set-output name=zip::$CODEQL_ZIP_OUTPUT"
 
+    - name: For debugging
+      run: |
+        echo ${{ steps.codeql-database-bundle.outputs.zip }}
+        
     - name: Upload CodeQL database for custom use
       uses: actions/upload-artifact@v2
       with:
         name: ${{ matrix.language }}-db
         path: ${{ steps.codeql-database-bundle.outputs.zip }}
+    
+  
 
     # How can we be sure of the directory _temp/codeql_databases/$LANGUAGE?
