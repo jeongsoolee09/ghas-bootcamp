@@ -70,6 +70,7 @@ jobs:  # the actions.
         output: "./results/${{ matrix.language }}"  # directory to write resulting sarif file
     
     # ===== Step 6: `Upload SARIF for GH` =====
+    # NOTE: This step is optional. github/codeql-action/analyze@2 already uploads the sarif files to GH.
 #     - name: Upload SARIF for GH    # the name that appears on the Web UI.
 #       uses: github/codeql-action/upload-sarif@v2  # github.com/codeql-action/upload-sarif, for GH consumption
 #       with:
@@ -78,7 +79,7 @@ jobs:  # the actions.
 
     # ===== Step 7: `Upload SARIF as Build Artifact` =====
     - name: Upload SARIF for custom use       # the name that appears on the Web UI.
-      uses: actions/upload-artifact@v2        # github.com/actions/upload-artifact, for custom consumption
+      uses: actions/upload-artifact@v3        # github.com/actions/upload-artifact, for custom consumption
       with:
         name: sarif                           # name of the artifact (excluding the .zip extension).
         path: "./results/${{ matrix.language }}/${{ matrix.language }}.sarif"                         # relative or absolute paths for each sarif file
@@ -95,10 +96,6 @@ jobs:  # the actions.
         $CODEQL_PATH database bundle $CODEQL_DATABASE --output=$CODEQL_ZIP_OUTPUT  # bundle the database into .zip.
 
         echo "::set-output name=zip::$CODEQL_ZIP_OUTPUT"
-
-    - name: For debugging
-      run: |
-        echo ${{ steps.codeql-database-bundle.outputs.zip }}
         
     - name: Upload CodeQL database for custom use
       uses: actions/upload-artifact@v2
