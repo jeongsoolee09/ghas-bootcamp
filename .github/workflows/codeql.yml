@@ -81,7 +81,7 @@ jobs:  # the actions.
       uses: actions/upload-artifact@v2        # github.com/actions/upload-artifact, for custom consumption
       with:
         name: sarif                           # name of the artifact.
-        path: results                         # relative or absolute paths
+        path: "./results/${{ matrix.language }}/${{ matrix.language }}.sarif"                         # relative or absolute paths
         retention-days: 7                     # bomb this after 7 days from creation.
 
     - name: Bundle CodeQL database    # the name that appears on the Web UI.
