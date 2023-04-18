@@ -70,11 +70,11 @@ jobs:  # the actions.
         output: "./results/${{ matrix.language }}"  # directory to write resulting sarif file
     
     # ===== Step 6: `Upload SARIF for GH` =====
-    - name: Upload SARIF for GH    # the name that appears on the Web UI.
-      uses: github/codeql-action/upload-sarif@v2  # github.com/codeql-action/upload-sarif, for GH consumption
-      with:
-        category: "/language:${{ matrix.language }}"
-        sarif_file: "./results/${{ matrix.language }}/${{ matrix.language }}.sarif"  # path to the sarif file 
+#     - name: Upload SARIF for GH    # the name that appears on the Web UI.
+#       uses: github/codeql-action/upload-sarif@v2  # github.com/codeql-action/upload-sarif, for GH consumption
+#       with:
+#         category: "/language:${{ matrix.language }}"
+#         sarif_file: "./results/${{ matrix.language }}/${{ matrix.language }}.sarif"  # path to the sarif file 
 
     # ===== Step 7: `Upload SARIF as Build Artifact` =====
     - name: Upload SARIF for custom use       # the name that appears on the Web UI.
