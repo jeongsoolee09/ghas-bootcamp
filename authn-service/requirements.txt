@@ -8,7 +8,7 @@ Flask==1.1.2
 Flask-Cors==3.0.8
 idna==3.4
 django-two-factor-auth==1.11
-django==2.1.0
+django==4.2.2
 itsdangerous==1.1.0
 Jinja2==2.11.2
 keyring==17.1.1
